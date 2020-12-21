@@ -10,10 +10,13 @@ rInt = read
 
 main :: IO ()
 main = do 
-   input <- readFile "input.txt"
+   input <- readFile "input.txt" 
    putStrLn "Part 1:"
-   print $ find2020Pair $ map rInt $ lines input
+   let nums = map rInt    -- convert to [Int]
+            $ lines input -- turn to array
+   print $ find2020Pair nums
+  --  print $ find2020Pair $ map rInt $ lines input
    putStrLn "Part 2:"
-   print $ find2020Triple $ map rInt $ lines input
+   print $ find2020Triple nums
   
   
