@@ -12,8 +12,8 @@ main :: IO ()
 main = do 
    input <- readFile "input.txt"
    putStrLn "Part 1:"
-   print $ find2020Pair $ map rInt . lines $ input
+   print $ find2020Pair $ map rInt $ lines input
    putStrLn "Part 2:"
-   print $ find2020Triple $ map rInt . lines $ input
+   print $ find2020Triple $ map rInt $ lines input
   
   
