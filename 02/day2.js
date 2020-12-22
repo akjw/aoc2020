@@ -23,12 +23,8 @@ function runValidityChecks(input){
      let secondIndex = indices[1];
      let char = rangeAndChar[1];
   
-     if(isValid(password, firstIndex, secondIndex, char)){
-       numValidPasswords1++;
-     }
-     if(isValid2(password, firstIndex, secondIndex, char)){
-       numValidPasswords2++;
-     }
+     if(isValid(password, firstIndex, secondIndex, char)) numValidPasswords1++;
+     if(isValid2(password, firstIndex, secondIndex, char)) numValidPasswords2++;
    }
    return {part1: numValidPasswords1, part2: numValidPasswords2}
 }
@@ -41,9 +37,7 @@ function isValid(pw, min, max, char){
 function countFrequency(pw, char){
   let count = 0;
   for(let i = 0; i < pw.length; i++){
-    if (pw[i] == char){
-      count++;
-    }
+    if (pw[i] == char) count++;
   }
   return count
 }
@@ -51,11 +45,7 @@ function countFrequency(pw, char){
 function isValid2(pw, fst, snd, char){
   let existsAtFirst = false;
   let existsAtSecond = false;
-  if(pw[fst] == char){
-    existsAtFirst = true;
-  }
-  if(pw[snd] == char){
-    existsAtSecond = true;
-  }
+  if(pw[fst] == char) existsAtFirst = true;
+  if(pw[snd] == char) existsAtSecond = true;
   return existsAtFirst != existsAtSecond
 }
