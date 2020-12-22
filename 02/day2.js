@@ -5,13 +5,13 @@ fs.readFile('./input.txt', 'utf8', function(err, data){
     throw err;
   }
     const input = data.split("\n");
-    const { part1, part2 } = getParams(input);
+    const { part1, part2 } = runValidityChecks(input);
     console.log(`PART 1: There are ${part1} valid passwords.`)
     console.log(`PART 2: There are ${part2} valid passwords.`)
 
 }); 
 
-function getParams(input){
+function runValidityChecks(input){
   let numValidPasswords1 = 0; 
   let numValidPasswords2 = 0; 
    for (let line in input) {
@@ -30,12 +30,22 @@ function getParams(input){
        numValidPasswords2++;
      }
    }
-   return {part1: numValidPasswords1, part2: numValidPasswords2};
+   return {part1: numValidPasswords1, part2: numValidPasswords2}
 }
 
 function isValid(pw, min, max, char){
   let count = countFrequency(pw, char)
-  return count >= min && count <= max ? true : false;
+  return count >= min && count <= max
+}
+
+function countFrequency(pw, char){
+  let count = 0;
+  for(let i = 0; i < pw.length; i++){
+    if (pw[i] == char){
+      count++;
+    }
+  }
+  return count
 }
 
 function isValid2(pw, fst, snd, char){
@@ -47,15 +57,5 @@ function isValid2(pw, fst, snd, char){
   if(pw[snd] == char){
     existsAtSecond = true;
   }
-  return existsAtFirst != existsAtSecond;
-}
-
-function countFrequency(pw, char){
-  let count = 0;
-  for(let i = 0; i < pw.length; i++){
-    if (pw[i] == char){
-      count++;
-    }
-  }
-  return count;
+  return existsAtFirst != existsAtSecond
 }
