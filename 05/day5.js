@@ -1,7 +1,7 @@
 const fs = require('fs'); 
 
 async function getInput (){
-  const input = fs.readFileSync('./input.txt').toString();
+  const input = await fs.readFileSync('./input.txt').toString();
   return input.split('\n');
 } 
 
